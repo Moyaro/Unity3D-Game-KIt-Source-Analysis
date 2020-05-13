@@ -3,7 +3,7 @@ using Gamekit3D.Message;//引用了本工程内置的类MessageSystem，（没�
 using System.Collections;//命名空间包含接口和类，这些接口和类定义各种对象（如列表、队列、位数组、哈希表和字典）的集合。https://docs.microsoft.com/zh-cn/dotnet/api/system.collections?view=netcore-3.1
 using UnityEngine.XR.WSA;//XR模块包含VR和AR相关平台支持功能。https://docs.unity3d.com/2018.2/Documentation/ScriptReference/UnityEngine.XRModule.html
 
-//本脚本主要实现了
+//本脚本主要实现了人物的控制
 namespace Gamekit3D
 {
     [RequireComponent(typeof(CharacterController))]
