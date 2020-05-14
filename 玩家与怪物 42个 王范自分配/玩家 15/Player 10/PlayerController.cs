@@ -9,6 +9,7 @@ namespace Gamekit3D
     [RequireComponent(typeof(CharacterController))]
     [RequireComponent(typeof(Animator))]
     //// 需要同物体上有Animator组件，但是不需要给他赋值Animator Controller
+    ///
     public class PlayerController : MonoBehaviour, IMessageReceiver
     {
         protected static PlayerController s_Instance;
