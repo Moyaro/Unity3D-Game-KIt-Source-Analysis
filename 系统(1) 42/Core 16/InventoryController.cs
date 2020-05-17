@@ -14,7 +14,7 @@ namespace Gamekit3D
             public UnityEvent OnAdd, OnRemove;
         }
         [System.Serializable]
-        public class InventoryChecker
+        public class InventoryChecker//<-------------
         {
 
             public string[] inventoryItems;
@@ -27,7 +27,7 @@ namespace Gamekit3D
                 {
                     for (var i = 0; i < inventoryItems.Length; i++)
                     {
-                        if (!inventory.HasItem(inventoryItems[i]))
+                        if (!inventory.HasItem(inventoryItems[i]))//若无道具进行如下事件，并返回false
                         {
                             OnDoesNotHaveItem.Invoke();
                             return false;
@@ -65,7 +65,7 @@ namespace Gamekit3D
             }
         }
 
-        public bool HasItem(string key)
+        public bool HasItem(string key)//判断是否含有该道具
         {
             return inventoryItems.Contains(key);
         }
