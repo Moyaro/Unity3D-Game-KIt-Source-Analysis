@@ -12,17 +12,18 @@ namespace Gamekit3D
 
         public override void OnSLStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
-            base.OnSLStateEnter(animator, stateInfo, layerIndex);
+            base.OnSLStateEnter(animator, stateInfo, layerIndex);//需要看scenelinkedsmb中对base变量定义
 
-            m_MonoBehaviour.RememberTargetPosition();
-            m_MonoBehaviour.grenadeLauncher.LoadProjectile();
+            m_MonoBehaviour.RememberTargetPosition();//记录目标位置
+            m_MonoBehaviour.grenadeLauncher.LoadProjectile();//发射器开始准备弹药
 
-            m_MonoBehaviour.grenadeLauncher.loadedProjectile.transform.up = Vector3.up;
-            m_MonoBehaviour.grenadeLauncher.loadedProjectile.transform.forward = m_MonoBehaviour.transform.forward;
+            m_MonoBehaviour.grenadeLauncher.loadedProjectile.transform.up = Vector3.up;//调整boss的弹药的垂直方向
+            m_MonoBehaviour.grenadeLauncher.loadedProjectile.transform.forward = m_MonoBehaviour.transform.forward;//调整boss的弹药的向前方向
 
             m_GrowthTimer = 0.0f;
         }
 
+        //状态转换的中间状态
         public override void OnSLStateNoTransitionUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
             base.OnSLStateNoTransitionUpdate(animator, stateInfo, layerIndex);
