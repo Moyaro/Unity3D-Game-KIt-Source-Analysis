@@ -191,8 +191,8 @@ namespace Gamekit3D
         public void FindTarget()
         {
             //we ignore height difference if the target was already seen
-            m_Target = playerScanner.Detect(transform, m_Target == null);
-            m_Controller.animator.SetBool(hashHaveEnemy, m_Target != null);
+            m_Target = playerScanner.Detect(transform, m_Target == null);//~~~~
+            m_Controller.animator.SetBool(hashHaveEnemy, m_Target != null);//如果 m_Target即目标物体存在，则 m_Target != null值为true，设置hashHaveEnemy的bool值为true
         }
 
 #if UNITY_EDITOR

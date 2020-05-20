@@ -8,7 +8,7 @@ namespace Gamekit3D
     {
         public override void OnSLStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
-            animator.ResetTrigger(ChomperBehavior.hashAttack);
+            animator.ResetTrigger(ChomperBehavior.hashAttack);//?
         }
 
         public override void OnSLStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
