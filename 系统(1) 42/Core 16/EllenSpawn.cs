@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Gamekit3D
 {
-    public class EllenSpawn : MonoBehaviour//重生
+    public class EllenSpawn : MonoBehaviour//重生.....
     {
         [HideInInspector]
         public float effectTime;
