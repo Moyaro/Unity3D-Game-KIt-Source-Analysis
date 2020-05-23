@@ -18,7 +18,7 @@ namespace Gamekit3D
         public int damageAmount = 1;
         public LayerMask damageMask;
         public float explosionRadius;
-        public float explosionTimer;
+        public float explosionTimer;//距离上次发射的时间
         public ParticleSystem explosionVFX;
         [Tooltip("Will the explosion VFX play where the grenade explode or on the closest ground")]
         public bool vfxOnGround = false;
@@ -140,17 +140,22 @@ namespace Gamekit3D
                 bouncePlayer.PlayRandomClip();
         }
 
+        //计算炮弹发射时做斜抛运动的发射速度（结合斜抛公式和代码，猜测这里的速度可能是初速度的竖直方向的速度）
         private Vector3 GetVelocity(Vector3 target)
         {
             Vector3 velocity = Vector3.zero;
             Vector3 toTarget = target - transform.position;
 
             // Set up the terms we need to solve the quadratic equations.
-            float gSquared = Physics.gravity.sqrMagnitude;
+            //
+            float gSquared = Physics.gravity.sqrMagnitude;//重力的平方
             float b = projectileSpeed * projectileSpeed + Vector3.Dot(toTarget, Physics.gravity);
-            float discriminant = b * b - gSquared * toTarget.sqrMagnitude;
+            float discriminant = b * b - gSquared * toTarget.sqrMagnitude;//距离敌人的距离的某种值，判别式？？？
+            //猜测这个判别式是用来判别能否掷到玩家
+            //这里projectileSpeed的含义未知，待解决
 
             // Check whether the target is reachable at max speed or less.
+            //检查是否以最大速度或以下达到目标。
             if (discriminant < 0)
             {
                 // Debug.Log("Can't reach");
@@ -166,7 +171,7 @@ namespace Gamekit3D
                 return velocity;
             }
 
-            float discRoot = Mathf.Sqrt(discriminant);
+            float discRoot = Mathf.Sqrt(discriminant);//求判别式的平方根
 
             // Highest shot with the given max speed:
             float T_max = Mathf.Sqrt((b + discRoot) * 2f / gSquared);
@@ -194,7 +199,7 @@ namespace Gamekit3D
                     break;
             }
 
-
+            //T的含义暂时未知
             // Convert from time-to-hit to a launch velocity:
             velocity = toTarget / T - Physics.gravity * T / 2f;
 
