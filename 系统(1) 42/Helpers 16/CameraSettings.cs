@@ -26,7 +26,7 @@ namespace Gamekit3D
         public Transform lookAt;//注视着的
         public CinemachineFreeLook keyboardAndMouseCamera;//CinemachineFreeLookEditor的文件路径是E:\UnityFile\Completion U3D GameKit\Library\PackageCache\com.unity.cinemachine@2.3.4\Editor\Editors，他是电影控制器开发工具包的一个类
         public CinemachineFreeLook controllerCamera;//该怎么用就怎么用，暂时没必要回溯去看CinemachineFreeLook的结构
-        public InputChoice inputChoice;
+        public InputChoice inputChoice;//枚举型的数据除了有方便阅读和确保变量合法的功能外，在Inspctor中还可以作为选项进行选择
         public InvertSettings keyboardAndMouseInvertSettings;//键盘和鼠标的颠倒设置
         public InvertSettings controllerInvertSettings;//控制者的颠倒设置
         public bool allowRuntimeCameraSettingsChanges;//是否允许在游戏运行时更改相机设置
@@ -38,22 +38,22 @@ namespace Gamekit3D
 
         void Reset()
         {
-            Transform keyboardAndMouseCameraTransform = transform.Find("KeyboardAndMouseFreeLookRig");
+            Transform keyboardAndMouseCameraTransform = transform.Find("KeyboardAndMouseFreeLookRig");//找到鼠标键盘相机控制器
             if (keyboardAndMouseCameraTransform != null)
-                keyboardAndMouseCamera = keyboardAndMouseCameraTransform.GetComponent<CinemachineFreeLook>();
+                keyboardAndMouseCamera = keyboardAndMouseCameraTransform.GetComponent<CinemachineFreeLook>();//获取鼠标键盘相机控制器上的自由视角电影机控制器
 
             Transform controllerCameraTransform = transform.Find("ControllerFreeLookRig");
             if (controllerCameraTransform != null)
                 controllerCamera = controllerCameraTransform.GetComponent<CinemachineFreeLook>();
 
-            PlayerController playerController = FindObjectOfType<PlayerController>();
+            PlayerController playerController = FindObjectOfType<PlayerController>();//寻找并保存被挂载的PlayerController
             if (playerController != null && playerController.name == "Ellen")
             {
-                follow = playerController.transform;
+                follow = playerController.transform;//跟随艾伦
 
-                lookAt = follow.Find("HeadTarget");
+                lookAt = follow.Find("HeadTarget");//注视着艾伦的头部
 
-                if (playerController.cameraSettings == null)
+                if (playerController.cameraSettings == null)//如果艾伦身上的相机没进行设置就将本类的设置进行覆盖
                     playerController.cameraSettings = this;
             }
         }
@@ -65,6 +65,7 @@ namespace Gamekit3D
 
         void Update()
         {
+            //每帧如果允许在运行时更新相机设置就更新
             if (allowRuntimeCameraSettingsChanges)
             {
                 UpdateCameraSettings();

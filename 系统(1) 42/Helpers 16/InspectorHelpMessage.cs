@@ -9,6 +9,7 @@ namespace Gamekit3D
 {
     /// <summary>
     /// Little helper class that allow to display a message in the inspector for documentation on some gameobject.
+    /// 允许在检查器中显示消息以提供有关某些游戏对象的文档
     /// </summary>
     public class InspectorHelpMessage : MonoBehaviour
     {
