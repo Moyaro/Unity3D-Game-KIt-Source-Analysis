@@ -6,12 +6,13 @@ namespace Gamekit3D
 {
     public class RigidbodyDelayedForce : MonoBehaviour
     {
-        public Vector3 forceToAdd;
+        public Vector3 forceToAdd;//受力方向
 
         private void Start()
         {
-            Rigidbody[] rigidbodies = gameObject.GetComponentsInChildren<Rigidbody>();
-
+            Rigidbody[] rigidbodies = gameObject.GetComponentsInChildren<Rigidbody>();//获取子对象所有的刚体组件
+            
+            //
             for (int i = 0; i < rigidbodies.Length; ++i)
             {
                 rigidbodies[i].maxAngularVelocity = 45;
