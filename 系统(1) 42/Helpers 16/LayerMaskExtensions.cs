@@ -4,6 +4,7 @@ using UnityEngine;
 
 namespace Gamekit3D
 {
+    //对图层掩码进行拓展
     public static class LayerMaskExtensions
     {
         public static bool Contains(this LayerMask layers, GameObject gameObject)

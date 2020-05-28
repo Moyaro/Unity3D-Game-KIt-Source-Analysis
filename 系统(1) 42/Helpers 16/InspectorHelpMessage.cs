@@ -17,12 +17,13 @@ namespace Gamekit3D
     }
 
 #if UNITY_EDITOR
+    //自定义编辑器https://docs.unity3d.com/Manual/editor-CustomEditors.html
     [CustomEditor(typeof(InspectorHelpMessage))]
     public class InspectorHelpMessageEditor : Editor
     {
         public override void OnInspectorGUI()
         {
-            EditorGUILayout.HelpBox((target as InspectorHelpMessage).message, MessageType.Info);
+            EditorGUILayout.HelpBox((target as InspectorHelpMessage).message, MessageType.Info);//?
         }
     }
 #endif 
